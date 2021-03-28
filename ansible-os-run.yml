@@ -1,0 +1,18 @@
+- hosts: os
+  vars_files: "{{ansible_facts.distribution}}:{{ansible_facts.distribution_major_version}}.yml"
+  tasks:
+  - name: Webserver Installation
+    package: 
+       name: "{{name}}"
+       state: present  
+  - name: copying pages
+    copy:
+      content: "{{ webcontent }}"
+      dest: /var/www/html/index.html
+      
+  - name: Webserver Package
+    service: 
+      name: "{{service}}"
+      state: started
+      enabled: true
+

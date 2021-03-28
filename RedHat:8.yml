@@ -1,0 +1,5 @@
+name: httpd
+dis: "{{ansible_facts.distribution}}"
+webcontent: >
+        This webpage is in {{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_version'] }}
+service: httpd
